@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: user-server-provider
+
+#数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud
+    #    url: jdbc:mysql://192.168.1.241:3306/hzzcszweb
+    username: root
+    password: root
+  #配置静态变量
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload.path}
+
+
+#mybatis配置
+#映射文件的路径，支持Ant风格的通配符，多个配置可以使用英文逗号隔开
+mybatis:
+  mapper-locations: classpath*:**/*Mapper.xml
+  #类型别名包配置，只能制定具体的包，多个配置可以用英文逗号隔开
+  #type-aliases-package: =**.dao
+  #自动将以下画线方式命名的数据库列映射到java对象的驼峰式命名属性中。默认为false
+  configuration:
+    map-underscore-to-camel-case: true

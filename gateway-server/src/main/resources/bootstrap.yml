@@ -1,0 +1,22 @@
+# 配置git库的文件
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8765
+      fail-fast: true
+      discovery:
+        service-id: gateway-server
+        enabled: true
+      label: master
+      profile: ${spring.profiles.active}
+
+
+
+# 配置eureka的服务器地址
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://root:root@eureka-one:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}

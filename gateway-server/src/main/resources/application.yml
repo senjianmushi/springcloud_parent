@@ -1,0 +1,70 @@
+# 设置端口号
+server:
+  port: 8766
+
+# 设置服务名称
+spring:
+  application:
+    name: @pom.artifactId@
+  # 选择配置文件版本号
+  profiles:
+    active: dev
+
+  # gateway路由设置
+  cloud:
+    gateway:
+      # 是否与服务发现组件进行结合，通过serviceId转发到具体的服务实例。
+      discovery:
+        locator:
+          enabled: true
+          # 设置为true时，开启小写的serviceId进行基础服务路由转发
+          # true：http://localhost:8766/user-server-provider/user/getRoleList?userId=1
+          # false：http://localhost:8766/USER-SERVER-PROVIDER/user/getRoleList?userId=1
+          lower-case-service-id: true
+#      default-filters:
+#      routes:
+#       - id: i5xforyou-biz-auth
+#          uri: lb://i5xforyou-biz-auth
+#          predicates:
+#          - Path= ${server.servlet.context-path}/auth/**
+#          filters:
+#          - StripPrefix= 1
+#      - id: user_route
+#        uri: http://localhost:9099
+#        predicates:
+#        - Path=/user-server/**
+#        filters:
+#        - StripPrefix=1
+#        - name: Retry
+#          # 这里的args要和name对齐
+#          args:
+#            # 重试次数
+#            retries: 3
+#            # 状态吗配置：符合的某段状态码才会进行重试逻辑，默认值是SERVER_ERROR，值是5
+#            series:
+#            - SERVER_ERROR
+#            # 状态码配置：和series不同的是这边是具体状态码的配置，取值请参考：org.springframework.http.HttpStatus
+#            statuses:
+#            - OK
+#            # 指定哪些方法的请求需要进行重试逻辑，默认值是GET方法，取值有GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE
+#            methods:
+#            - GET
+#            - POST
+#            # 指定哪些异常需要进行重试逻辑，默认值是java.io.IOException
+#            exceptions:
+#            - java.io.IOException
+#        - name: Hystrix
+#          args:
+#            name: fallbackmd # HystrixCommond的名字
+#            fallbackUri: forward:/fallback #fallback对应的uri
+
+#      - id: repair_route
+#        uri: http://localhost:9098
+#        predicates:
+#        - Path=/repair-server/**
+#        filters:
+#        - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

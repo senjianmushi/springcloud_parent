@@ -1,0 +1,15 @@
+#boostrap上下文会先加载的配置
+eureka:
+  server:
+    # 向服务中心注册（自己）：如果是集群的话需要设置为true
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+  client:
+    # 向服务中心注册（自己）：如果是集群的话需要设置为true
+    register-with-eureka: false
+    # 是否需要检索服务
+    fetch-registry: false
+    # 设置服务的实际地址
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

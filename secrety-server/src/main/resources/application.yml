@@ -1,0 +1,25 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: secrety-server
+  profiles:
+    active: dev
+
+  # Druid 数据库连接池分配
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#mybatis配置
+#映射文件的路径，支持Ant风格的通配符，多个配置可以使用英文逗号隔开
+mybatis:
+  mapper-locations: classpath*:**/*Mapper.xml
+  #类型别名包配置，只能制定具体的包，多个配置可以用英文逗号隔开
+  #type-aliases-package: =**.dao
+  #自动将以下画线方式命名的数据库列映射到java对象的驼峰式命名属性中。默认为false
+  configuration:
+    map-underscore-to-camel-case: true

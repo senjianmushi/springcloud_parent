@@ -1,0 +1,25 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: @pom.artifactId@
+  profiles:
+    active: dev
+
+#  boot:
+#    admin:
+#      username: admin
+#      password: admin
+#
+#security:
+#  user:
+#    name: admin
+#    password: admin
+#management:
+#  security:
+#    enabled: true
+#    role: admint
+management:
+  security:
+    enabled: false

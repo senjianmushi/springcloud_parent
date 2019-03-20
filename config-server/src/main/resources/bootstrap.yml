@@ -1,0 +1,23 @@
+# 仓库配置中心的配置信息
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${user.dir}\config-server\src\main\resources\configs
+          # https://github.com/senjianmushi/springcloud-parent-rpo.git
+          # username表示你的GitHub用户名
+          # username:
+          # password表示你的GitHub密码
+          #password:
+          # 更改本地仓库clone的配置文件信息的路径
+          #basedir: ${user.dir}\config-server\src\main\resources\configs
+
+# 配置eureka的服务器地址
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://root:root@eureka-one:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
